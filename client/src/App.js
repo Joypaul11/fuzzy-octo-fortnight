@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 
 import Login from './pages/Login';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <div className="w-100" style={{ maxWidth: "400px" }}>
         <Router>
           <Switch>
+            <Route exact path='/' component={Profile}/>
             <Route path='/login' component={Login}/>
           </Switch>
         </Router>
