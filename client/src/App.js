@@ -8,6 +8,7 @@ import Login from './components/Login';
 import Profile from './components/Profile';
 import PrivateRoute from './components/PrivateRoute';
 import OrderList from './components/OrderList';
+import Order from './components/Order';
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
           <AuthProvider>
             <Switch>
               <PrivateRoute exact path='/' component={Profile}/>
-              <PrivateRoute path='/orders' component={OrderList}/>
+              <PrivateRoute exact path='/orders' component={OrderList}/>
+              <PrivateRoute path='/orders/:orderid' component={Order}/>
               <Route path='/login' component={Login}/>
             </Switch>
           </AuthProvider>

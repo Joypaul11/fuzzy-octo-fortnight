@@ -16,7 +16,10 @@ export default function OrderList(props) {
                 if (typeof result.data[x] === 'object' && result.data[x].title) {
                 
                     allOrders.push(
-                    <ListGroupItem action onClick={() => showOrder(x, result.data[x])} key={x}>
+                    <ListGroupItem action onClick={() => history.push({
+                        pathname: '/orders/' + x,
+                        orderDetails: result.data[x]
+                        })} key={x}>
                         <strong>Title: </strong>{result.data[x].title} <br/>
                         <strong>Booking Date: </strong> {result.data[x].bookingDate} <br/>
                         
@@ -29,23 +32,14 @@ export default function OrderList(props) {
         fetchData();
     }, [])
 
-    function goHome() {
-        history.push('/');
-    }
-
-    function showOrder(orderId, orderDetails) {
-        console.log(orderId, orderDetails);
-        history.push({pathname: `/order/${orderId}`, orderId: orderId, orderDetails: orderDetails});
-    }
-
     return (
         <>
         <h1>Orders</h1>
         <ListGroup>
             {orders}
         </ListGroup>
-        <Button variant="link" onClick={goHome}>
-        Go home
+        <Button variant="link" onClick={() => history.push('/')}>
+            Go home
         </Button>
         </>
     )
