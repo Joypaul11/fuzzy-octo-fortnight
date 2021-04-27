@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
+import { AuthProvider } from './contexts/AuthContext';
 
-import Login from './pages/Login';
-import Profile from './pages/Profile';
+import Login from './components/Login';
+import Profile from './components/Profile';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
@@ -13,10 +16,12 @@ function App() {
     >
       <div className="w-100" style={{ maxWidth: "400px" }}>
         <Router>
-          <Switch>
-            <Route exact path='/' component={Profile}/>
-            <Route path='/login' component={Login}/>
-          </Switch>
+          <AuthProvider>
+            <Switch>
+              <PrivateRoute exact path='/' component={Profile}/>
+              <Route path='/login' component={Login}/>
+            </Switch>
+          </AuthProvider>
         </Router>
       </div>
     </Container>
