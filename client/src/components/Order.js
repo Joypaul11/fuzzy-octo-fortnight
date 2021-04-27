@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react';
 import { Card, Button, Form } from 'react-bootstrap';
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import moment from 'moment';
 
@@ -9,7 +9,6 @@ export default function Order({location }) {
     const orderdate = useRef();
     const history = useHistory();
     const [editState, setEditState] = useState(false);
-    console.log(location);
     const orderId = location.orderId;
     let order = location.orderDetails;
     if (!order) history.push('/orders');

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { ListGroup, ListGroupItem, Button } from 'react-bootstrap'
 import axios from 'axios';
-import { Link, useHistory } from "react-router-dom"
+import moment from 'moment';
+import { useHistory } from "react-router-dom"
 
 export default function OrderList(props) {
     const [orders, setOrders] = useState([])
@@ -18,10 +19,11 @@ export default function OrderList(props) {
                     allOrders.push(
                     <ListGroupItem action onClick={() => history.push({
                         pathname: '/orders/' + x,
+                        orderId: x,
                         orderDetails: result.data[x]
                         })} key={x}>
                         <strong>Title: </strong>{result.data[x].title} <br/>
-                        <strong>Booking Date: </strong> {result.data[x].bookingDate} <br/>
+                        <strong>Booking Date: </strong> {moment.utc(result.data[x].bookingDate).format('DD-MM-YYYY')} <br/>
                         
                     </ListGroupItem>
                     )
