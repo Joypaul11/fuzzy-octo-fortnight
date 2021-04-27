@@ -14,9 +14,13 @@ if(!port) {
     process.exit(1);
 }
 
-app.get('/', async(req, res) => {
-    return res.status(200).json('Hello from server!');
-})
+// app.get('/', async(req, res) => {
+//     return res.status(200).json('Hello from server!');
+// });
+
+const router = express.Router();
+const routes = require('./api/routeImports');
+app.use('/', routes(router));
 
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
