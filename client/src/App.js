@@ -7,6 +7,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import Login from './components/Login';
 import Profile from './components/Profile';
 import PrivateRoute from './components/PrivateRoute';
+import OrderList from './components/OrderList';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <AuthProvider>
             <Switch>
               <PrivateRoute exact path='/' component={Profile}/>
+              <PrivateRoute path='/orders' component={OrderList}/>
               <Route path='/login' component={Login}/>
             </Switch>
           </AuthProvider>

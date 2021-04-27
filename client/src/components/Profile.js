@@ -38,6 +38,9 @@ export default function Profile() {
                 </Card.Body>
             </Card>
             <div className="w-100 text-center mt-2">
+                <Button variant="link" onClick={() => history.push('/orders')}>
+                Orders
+                </Button>
                 <Button variant="link" onClick={handleLogout}>
                 Log Out
                 </Button>
