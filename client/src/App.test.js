@@ -1,8 +1,11 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import App from './App';
+import OrderList from './components/OrderList';
+import PrivateRoute from './components/PrivateRoute';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/Hello from client/i);
-  expect(linkElement).toBeInTheDocument();
+describe('App', () => {
+  test('renders OrderList component', () => {
+    render(<OrderList />);
+    screen.debug()
+  });
 });

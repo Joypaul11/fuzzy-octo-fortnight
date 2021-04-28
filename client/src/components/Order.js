@@ -69,9 +69,9 @@ export default function Order({location }) {
                         <Card.Text><strong>Address: </strong>{order.formattedAddress}</Card.Text>
                         <Card.Text><strong>Customer: </strong></Card.Text>
                         <ListGroup className="list-group-flush">
-                            <ListGroupItem><strong>Name: </strong>{order.customer.name}</ListGroupItem>
-                            <ListGroupItem><strong>Email: </strong>{order.customer.email}</ListGroupItem>
-                            <ListGroupItem><strong>Phone: </strong>{order.customer.phone}</ListGroupItem>
+                            <ListGroupItem><strong>Name: </strong>{order?.customer?.name}</ListGroupItem>
+                            <ListGroupItem><strong>Email: </strong>{order?.customer?.email}</ListGroupItem>
+                            <ListGroupItem><strong>Phone: </strong>{order?.customer?.phone}</ListGroupItem>
                         </ListGroup>
                         <Button onClick={() => setEditState(!editState)} className="float-right" variant="outline-primary">Edit</Button>
                     </Card.Body>
