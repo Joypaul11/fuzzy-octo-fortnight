@@ -1,4 +1,3 @@
-import { Container } from 'react-bootstrap';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import { AuthProvider } from './contexts/AuthContext';
@@ -11,12 +10,7 @@ import Order from './components/Order';
 
 function App() {
   return (
-    <Container
-    className="d-flex"
-      // className="d-flex align-items-center justify-content-center"
-      style={{ minHeight: "100vh" }}
-    >
-      <div className="w-100" style={{ maxWidth: "100%" }}>
+    
         <Router>
           <AuthProvider>
             <Switch>
@@ -27,8 +21,6 @@ function App() {
             </Switch>
           </AuthProvider>
         </Router>
-      </div>
-    </Container>
   );
 }
 

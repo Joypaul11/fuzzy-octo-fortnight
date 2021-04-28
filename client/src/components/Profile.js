@@ -1,23 +1,10 @@
 import React,  { useState, useEffect } from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { useAuth } from "../contexts/AuthContext";
-import { useHistory } from "react-router-dom";
 
 export default function Profile() {
-    const { currentUser, logout, getUserDetails } = useAuth();
-    const [error, setError] = useState("");
-    const history = useHistory();
+    const { currentUser, getUserDetails } = useAuth();
     const [user, setUser] = useState({});
-
-    async function handleLogout() {
-        setError("")
-        try {
-          await logout()
-          history.push("/login")
-        } catch {
-          setError("Failed to log out")
-        }
-    }
 
     useEffect(() => {
         getUserDetails(currentUser.uid)
@@ -37,14 +24,6 @@ export default function Profile() {
                     <strong>Phone: </strong> {user.phone}
                 </Card.Body>
             </Card>
-            <div className="w-100 text-center mt-2">
-                <Button variant="link" onClick={() => history.push('/orders')}>
-                Orders
-                </Button>
-                <Button variant="link" onClick={handleLogout}>
-                Log Out
-                </Button>
-            </div>
         </>
     )
 }

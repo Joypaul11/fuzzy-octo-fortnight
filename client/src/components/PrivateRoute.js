@@ -1,11 +1,11 @@
 import { Route, Redirect } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { Container } from 'react-bootstrap';
 
 import AppNavbar from './Navbar';
 
 export default function PrivateRoute({component: Component, ...rest}) {
     const { currentUser } = useAuth();
-    console.log(currentUser);
     return (
         <Route 
             {...rest}
@@ -13,7 +13,11 @@ export default function PrivateRoute({component: Component, ...rest}) {
                 return currentUser ? 
                     <>
                         <AppNavbar/>
-                        <Component {...props} />
+                        <Container className="d-flex justify-content-center" style={{ minHeight: "100vh" }}>
+                            <div className="w-100">
+                                <Component {...props} />
+                            </div>
+                        </Container>
                     </>
                      : 
                     <Redirect to="/login" />

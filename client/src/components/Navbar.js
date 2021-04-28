@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Navbar, Nav, Button } from 'react-bootstrap';
 import './Navbar.css';
 import { Link, useHistory, useLocation } from 'react-router-dom';
@@ -26,8 +26,8 @@ export default function AppNavbar() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto" activeKey={location.pathname}>
-                <Nav.Link href="/" >Profile</Nav.Link>
-                <Nav.Link href="/orders">Orders</Nav.Link>
+                <Nav.Link as={Link} to="/" >Profile</Nav.Link>
+                <Nav.Link as={Link} to="/orders">Orders</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
             <Button variant="outline-danger" onClick={handleLogout}>Logout</Button>
