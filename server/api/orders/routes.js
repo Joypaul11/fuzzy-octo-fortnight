@@ -4,4 +4,6 @@ module.exports = router => {
     router.get('/orders', controller.getOrders);
 
     router.put('/orders/:orderId', controller.editOrder);
+
+    router.post('/orders', controller.addOrder);
 }
