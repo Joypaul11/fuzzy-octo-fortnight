@@ -1,6 +1,8 @@
 import { Route, Redirect } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
+import AppNavbar from './Navbar';
+
 export default function PrivateRoute({component: Component, ...rest}) {
     const { currentUser } = useAuth();
     console.log(currentUser);
@@ -8,7 +10,13 @@ export default function PrivateRoute({component: Component, ...rest}) {
         <Route 
             {...rest}
             render={props => {
-                return currentUser ? <Component {...props} /> : <Redirect to="/login" />
+                return currentUser ? 
+                    <>
+                        <AppNavbar/>
+                        <Component {...props} />
+                    </>
+                     : 
+                    <Redirect to="/login" />
             }}
         ></Route>
     )

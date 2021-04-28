@@ -28,10 +28,10 @@ export default function Profile() {
 
     return (
         <>
-            <h1>Home</h1>
+            <h2 className="mb-4">Profile</h2>
             <Card>
                 <Card.Body>
-                    <h2 className="text-center mb-4">Profile</h2>
+                    
                     <strong>Name:</strong> {user.name} <br/>
                     <strong>Email:</strong> {user.email} <br/>
                     <strong>Phone: </strong> {user.phone}

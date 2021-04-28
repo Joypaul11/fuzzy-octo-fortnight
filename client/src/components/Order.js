@@ -49,7 +49,7 @@ export default function Order({location }) {
         return (
             
             <div>
-                <h1>Order</h1>
+                <h2 className="mb-4">Order</h2>
                 <Card style={{ width: '18rem' }}>
                     <Card.Body>
                         <Card.Title>TITLE: {order.title}</Card.Title>

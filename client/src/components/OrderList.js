@@ -34,15 +34,16 @@ export default function OrderList(props) {
         fetchData();
     }, [])
 
+    const arrangeOrderData = (order) => {
+        console.log(order);
+    }
+
     return (
         <>
-        <h1>Orders</h1>
+        <h2 className="mb-4">Order List</h2>
         <ListGroup>
             {orders}
         </ListGroup>
-        <Button variant="link" onClick={() => history.push('/')}>
-            Go home
-        </Button>
         </>
     )
 }
