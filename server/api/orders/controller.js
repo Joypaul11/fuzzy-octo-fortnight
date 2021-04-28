@@ -13,8 +13,10 @@ controller.getOrders = async(req, res) => {
 }
 
 controller.editOrder = async(req, res) => {
+  let theOrder = await (await OrdersRef.child(req.params.orderId).get()).exists();
+  if (!theOrder) return res.status(500).json('Invalid request');
   try {
-    await OrdersRef.child(req.params.orderId).update({
+      await OrdersRef.child(req.params.orderId).update({
       bookingDate: moment.utc(req.body.bookingDate, 'YYYY-MM-DD').valueOf(),
       title: req.body.orderTitle
     })
@@ -26,6 +28,18 @@ controller.editOrder = async(req, res) => {
 }
 
 controller.addOrder = async(req, res) => {
+  // Validations
+  if (!req.body) return res.status(500).json('Invalid request');
+  let newOrder = {
+    title: req.body.title,
+    bookingDate: req.body.bookingDate,
+    customer: req.body.customer,
+    address: req.body.address
+  }
+  
+  if (!newOrder.title || typeof newOrder.title !== 'string') return res.status(500).json('Invalid request');
+  if (!newOrder.bookingDate || typeof newOrder.bookingDate !== 'number') return res.status(500).json('Invalid date');
+
   try {
     const orderId = await OrdersRef.push().getKey();
     await OrdersRef.child(orderId).set(req.body);
